@@ -128,10 +128,30 @@ void ExibirMediaDaBanda()
     ExibirTituloDaOpcao("Exibir médias de uma banda");
     Console.Write("Qual banda você deseja visualizar a média: ");
     string nomeDaBanda = Console.ReadLine()!;
-    if (bandasRegistradas.ContainsKey(nomeDaBanda))
-    {
-
+    int somaDasNotas = 0;
+    int quantidadeDeNotas = 0;
+    foreach (string banda in bandasRegistradas.Keys) 
+    { 
+        if (bandasRegistradas.Keys.Contains(nomeDaBanda))
+        {
+            foreach (int nota in bandasRegistradas[banda])
+            {
+                somaDasNotas = somaDasNotas + nota;
+                quantidadeDeNotas++;
+            }
+            double mediaDasNotas = somaDasNotas / quantidadeDeNotas;
+            Console.WriteLine($"A média para a banda {nomeDaBanda} é: {mediaDasNotas}");
+            break;
+        }
+        else
+        {
+            Console.WriteLine($"A banda {nomeDaBanda} não existe no banco de dados");
+            break;
+        }
     }
+    Thread.Sleep( 2000 );
+    Console.Clear();
+    ExibirOpcoesDoMenu();
 }
 
 ExibirOpcoesDoMenu();
