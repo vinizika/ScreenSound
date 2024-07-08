@@ -1,14 +1,24 @@
-﻿Musica musica1 = new Musica();
-musica1.nome = "Earthquake";
-musica1.artista = "Tyler";
-musica1.duracao = 300;
-musica1.disponivel = true;
+﻿Banda tyler = new Banda("Tyler");
 
-Musica musica2 = new Musica();
-musica2.nome = "Vertigo";
-musica2.artista = "U2";
-musica2.duracao = 280;
-musica2.disponivel = false;
+Album IGOR = new Album("IGOR");
+IGOR.Genero.Nome = "Melodic Rap";
 
-musica1.ExibirFichaTecnica();
-musica2.ExibirFichaTecnica();
+Musica earthquake = new Musica(tyler, "Earthquake")
+{
+    Duracao = 180,
+    Disponivel = true,
+};
+
+Musica puppet = new Musica(tyler, "Puppet")
+{
+    Duracao = 276,
+    Disponivel = false,
+};
+
+IGOR.AdicionarMusica(earthquake);
+IGOR.AdicionarMusica(puppet);
+
+earthquake.ExibirFichaTecnica();
+
+tyler.AdicionarAlbum(IGOR);
+tyler.ExibirDiscografia();
